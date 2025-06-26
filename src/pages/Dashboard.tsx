@@ -6,6 +6,7 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Brain, Eye, Users, Shield, TrendingUp, Calendar, MessageSquare, Settings, LogOut, Home } from "lucide-react";
 import { Link } from "react-router-dom";
+
 const Dashboard = () => {
   const [analysisProgress] = useState(78);
   const insights = [{
@@ -62,16 +63,16 @@ const Dashboard = () => {
           </div>
           <div className="flex items-center space-x-4">
             <Link to="/">
-              <Button variant="outline" size="sm" className="border-slate-600 text-gray-50 bg-zinc-950 hover:bg-zinc-800">
+              <Button variant="outline" size="sm" className="border-mind-blue-500/50 text-white bg-gradient-to-r from-mind-blue-600/20 to-mind-purple-600/20 hover:from-mind-blue-600/30 hover:to-mind-purple-600/30 backdrop-blur-sm">
                 <Home className="h-4 w-4 mr-2" />
                 Home
               </Button>
             </Link>
-            <Button variant="outline" size="sm" className="border-slate-600 text-slate-300 hover:bg-slate-800">
+            <Button variant="outline" size="sm" className="border-mind-purple-500/50 text-white bg-gradient-to-r from-mind-purple-600/20 to-mind-blue-600/20 hover:from-mind-purple-600/30 hover:to-mind-blue-600/30 backdrop-blur-sm">
               <Settings className="h-4 w-4 mr-2" />
               Settings
             </Button>
-            <Button variant="outline" size="sm" className="border-slate-600 text-slate-300 hover:bg-slate-800">
+            <Button variant="outline" size="sm" className="border-mind-blue-500/50 text-white bg-gradient-to-r from-mind-blue-600/20 to-mind-purple-600/20 hover:from-mind-blue-600/30 hover:to-mind-purple-600/30 backdrop-blur-sm">
               <LogOut className="h-4 w-4 mr-2" />
               Logout
             </Button>
@@ -277,4 +278,5 @@ const Dashboard = () => {
       </div>
     </div>;
 };
+
 export default Dashboard;
