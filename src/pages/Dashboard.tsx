@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,43 +6,49 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Brain, Eye, Users, Shield, TrendingUp, Calendar, MessageSquare, Settings, LogOut, Home } from "lucide-react";
 import { Link } from "react-router-dom";
-
 const Dashboard = () => {
   const [analysisProgress] = useState(78);
-
-  const insights = [
-    {
-      title: "Core Pattern Identified",
-      description: "You tend to avoid conflict by people-pleasing, which leads to internal resentment.",
-      icon: <Brain className="h-5 w-5 text-mind-purple-400" />,
-      severity: "High Impact",
-      color: "border-l-red-500"
-    },
-    {
-      title: "Relationship Dynamic",
-      description: "You attract partners who need 'fixing' - this stems from your childhood caretaker role.",
-      icon: <Users className="h-5 w-5 text-mind-blue-400" />,
-      severity: "Medium Impact",
-      color: "border-l-yellow-500"
-    },
-    {
-      title: "Success Sabotage",
-      description: "Fear of outshining others causes you to dim your achievements.",
-      icon: <Eye className="h-5 w-5 text-mind-purple-400" />,
-      severity: "High Impact",
-      color: "border-l-red-500"
-    }
-  ];
-
-  const sessions = [
-    { date: "Dec 24", topic: "Childhood Patterns", duration: "45 min", status: "Completed" },
-    { date: "Dec 22", topic: "Relationship Analysis", duration: "38 min", status: "Completed" },
-    { date: "Dec 20", topic: "Career Blocks", duration: "52 min", status: "Completed" },
-    { date: "Dec 18", topic: "Self-Worth Deep Dive", duration: "41 min", status: "In Progress" }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-purple-900 text-white">
+  const insights = [{
+    title: "Core Pattern Identified",
+    description: "You tend to avoid conflict by people-pleasing, which leads to internal resentment.",
+    icon: <Brain className="h-5 w-5 text-mind-purple-400" />,
+    severity: "High Impact",
+    color: "border-l-red-500"
+  }, {
+    title: "Relationship Dynamic",
+    description: "You attract partners who need 'fixing' - this stems from your childhood caretaker role.",
+    icon: <Users className="h-5 w-5 text-mind-blue-400" />,
+    severity: "Medium Impact",
+    color: "border-l-yellow-500"
+  }, {
+    title: "Success Sabotage",
+    description: "Fear of outshining others causes you to dim your achievements.",
+    icon: <Eye className="h-5 w-5 text-mind-purple-400" />,
+    severity: "High Impact",
+    color: "border-l-red-500"
+  }];
+  const sessions = [{
+    date: "Dec 24",
+    topic: "Childhood Patterns",
+    duration: "45 min",
+    status: "Completed"
+  }, {
+    date: "Dec 22",
+    topic: "Relationship Analysis",
+    duration: "38 min",
+    status: "Completed"
+  }, {
+    date: "Dec 20",
+    topic: "Career Blocks",
+    duration: "52 min",
+    status: "Completed"
+  }, {
+    date: "Dec 18",
+    topic: "Self-Worth Deep Dive",
+    duration: "41 min",
+    status: "In Progress"
+  }];
+  return <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-purple-900 text-white">
       {/* Header */}
       <header className="border-b border-slate-700/50 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -57,7 +62,7 @@ const Dashboard = () => {
           </div>
           <div className="flex items-center space-x-4">
             <Link to="/">
-              <Button variant="outline" size="sm" className="border-slate-600 text-slate-300 hover:bg-slate-800">
+              <Button variant="outline" size="sm" className="border-slate-600 text-gray-50 bg-zinc-950 hover:bg-zinc-800">
                 <Home className="h-4 w-4 mr-2" />
                 Home
               </Button>
@@ -77,9 +82,7 @@ const Dashboard = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h1 className="text-4xl font-playfair font-bold mb-2 bg-gradient-to-r from-slate-100 to-mind-purple-300 bg-clip-text text-transparent">
-            Welcome back, Sarah
-          </h1>
+          <h1 className="text-4xl font-playfair font-bold mb-2 bg-gradient-to-r from-slate-100 to-mind-purple-300 bg-clip-text text-transparent">Welcome back, crazy ho</h1>
           <p className="text-slate-300 text-lg">Your journey of self-discovery continues...</p>
         </div>
 
@@ -153,8 +156,7 @@ const Dashboard = () => {
             </div>
             
             <div className="space-y-4">
-              {insights.map((insight, index) => (
-                <Card key={index} className={`border-slate-700/50 bg-slate-800/60 backdrop-blur-sm border-l-4 ${insight.color}`}>
+              {insights.map((insight, index) => <Card key={index} className={`border-slate-700/50 bg-slate-800/60 backdrop-blur-sm border-l-4 ${insight.color}`}>
                   <CardHeader className="pb-3">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center space-x-3">
@@ -176,8 +178,7 @@ const Dashboard = () => {
                       Explore Deeper
                     </Button>
                   </CardContent>
-                </Card>
-              ))}
+                </Card>)}
             </div>
           </TabsContent>
 
@@ -190,8 +191,7 @@ const Dashboard = () => {
             </div>
             
             <div className="space-y-3">
-              {sessions.map((session, index) => (
-                <Card key={index} className="border-slate-700/50 bg-slate-800/60 backdrop-blur-sm">
+              {sessions.map((session, index) => <Card key={index} className="border-slate-700/50 bg-slate-800/60 backdrop-blur-sm">
                   <CardContent className="py-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
@@ -213,8 +213,7 @@ const Dashboard = () => {
                       </div>
                     </div>
                   </CardContent>
-                </Card>
-              ))}
+                </Card>)}
             </div>
           </TabsContent>
 
@@ -276,8 +275,6 @@ const Dashboard = () => {
           </TabsContent>
         </Tabs>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Dashboard;
