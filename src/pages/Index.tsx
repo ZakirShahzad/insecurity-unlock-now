@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Brain, Eye, Users, Shield, Star, ArrowRight, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [email, setEmail] = useState('');
@@ -44,43 +45,50 @@ const Index = () => {
 
   const features = [
     {
-      icon: <Brain className="h-8 w-8 text-mind-purple-600" />,
+      icon: <Brain className="h-8 w-8 text-mind-purple-400" />,
       title: "Subconscious Pattern Analysis",
       description: "Our AI identifies hidden behavioral patterns that sabotage your success and happiness."
     },
     {
-      icon: <Eye className="h-8 w-8 text-mind-blue-600" />,
+      icon: <Eye className="h-8 w-8 text-mind-blue-400" />,
       title: "Blind Spot Detection",
       description: "Discover what you can't see about yourself - the unconscious habits holding you back."
     },
     {
-      icon: <Users className="h-8 w-8 text-mind-purple-600" />,
+      icon: <Users className="h-8 w-8 text-mind-purple-400" />,
       title: "Relationship Insights",
       description: "Understand your attachment style and why you attract certain people into your life."
     },
     {
-      icon: <Shield className="h-8 w-8 text-mind-blue-600" />,
+      icon: <Shield className="h-8 w-8 text-mind-blue-400" />,
       title: "Defense Mechanism Map",
       description: "Learn how your mind protects you - and when that protection becomes self-sabotage."
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 font-inter">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-purple-900 font-inter text-white">
       {/* Header */}
-      <header className="border-b border-slate-200/50 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+      <header className="border-b border-slate-700/50 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-br from-mind-blue-500 to-mind-purple-600 rounded-lg flex items-center justify-center">
               <Brain className="h-5 w-5 text-white" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-mind-blue-600 to-mind-purple-600 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-gradient-to-r from-mind-blue-400 to-mind-purple-400 bg-clip-text text-transparent">
               MindMirror
             </span>
           </div>
-          <Badge variant="secondary" className="animate-pulse-glow">
-            Early Access
-          </Badge>
+          <div className="flex items-center space-x-4">
+            <Badge variant="secondary" className="animate-pulse-glow bg-slate-800 text-purple-300 border-purple-500/30">
+              Early Access
+            </Badge>
+            <Link to="/dashboard">
+              <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800">
+                Dashboard
+              </Button>
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -88,18 +96,18 @@ const Index = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto text-center max-w-6xl">
           <div className="animate-fade-in">
-            <Badge className="mb-6 bg-gradient-to-r from-mind-blue-100 to-mind-purple-100 text-mind-purple-700 border-mind-purple-200">
+            <Badge className="mb-6 bg-gradient-to-r from-mind-blue-900/50 to-mind-purple-900/50 text-purple-300 border-purple-500/30">
               🧠 Powered by Advanced Psychology AI
             </Badge>
             
-            <h1 className="text-5xl md:text-7xl font-playfair font-bold mb-6 bg-gradient-to-r from-slate-900 via-mind-blue-800 to-mind-purple-800 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-5xl md:text-7xl font-playfair font-bold mb-6 bg-gradient-to-r from-slate-100 via-mind-blue-300 to-mind-purple-300 bg-clip-text text-transparent leading-tight">
               What if you could see
               <br />
               <span className="italic">your own blind spots?</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Most people go through life wondering <strong>"Why do I keep doing this?"</strong><br />
+            <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Most people go through life wondering <strong className="text-white">"Why do I keep doing this?"</strong><br />
               MindMirror reveals the hidden patterns sabotaging your happiness and success.
             </p>
 
@@ -109,7 +117,7 @@ const Index = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="text-lg py-3 border-2 border-mind-blue-200 focus:border-mind-purple-400"
+                className="text-lg py-3 border-2 border-slate-600 bg-slate-800/50 text-white placeholder:text-slate-400 focus:border-mind-purple-400"
               />
               <Button 
                 onClick={handleEarlyAccess}
@@ -121,46 +129,46 @@ const Index = () => {
               </Button>
             </div>
 
-            <p className="text-sm text-slate-500 mb-16">
+            <p className="text-sm text-slate-400 mb-16">
               Join 2,847 people discovering their hidden potential
             </p>
           </div>
 
           {/* Problem Section */}
-          <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 mb-20 border border-slate-200/50 shadow-xl">
-            <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-8 text-slate-800">
+          <div className="bg-slate-800/40 backdrop-blur-sm rounded-3xl p-8 md:p-12 mb-20 border border-slate-700/50 shadow-xl">
+            <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-8 text-slate-100">
               You know something's holding you back...
               <br />
-              <span className="text-mind-purple-600">but you can't figure out what</span>
+              <span className="text-mind-purple-400">but you can't figure out what</span>
             </h2>
             
             <div className="grid md:grid-cols-2 gap-8 text-left">
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-mind-purple-500 rounded-full mt-3 flex-shrink-0"></div>
-                  <p className="text-slate-700 text-lg">You repeat the same mistakes in relationships</p>
+                  <div className="w-2 h-2 bg-mind-purple-400 rounded-full mt-3 flex-shrink-0"></div>
+                  <p className="text-slate-300 text-lg">You repeat the same mistakes in relationships</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-mind-blue-500 rounded-full mt-3 flex-shrink-0"></div>
-                  <p className="text-slate-700 text-lg">You procrastinate on things that matter most</p>
+                  <div className="w-2 h-2 bg-mind-blue-400 rounded-full mt-3 flex-shrink-0"></div>
+                  <p className="text-slate-300 text-lg">You procrastinate on things that matter most</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-mind-purple-500 rounded-full mt-3 flex-shrink-0"></div>
-                  <p className="text-slate-700 text-lg">You sabotage yourself right before success</p>
+                  <div className="w-2 h-2 bg-mind-purple-400 rounded-full mt-3 flex-shrink-0"></div>
+                  <p className="text-slate-300 text-lg">You sabotage yourself right before success</p>
                 </div>
               </div>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-mind-blue-500 rounded-full mt-3 flex-shrink-0"></div>
-                  <p className="text-slate-700 text-lg">You feel stuck despite trying everything</p>
+                  <div className="w-2 h-2 bg-mind-blue-400 rounded-full mt-3 flex-shrink-0"></div>
+                  <p className="text-slate-300 text-lg">You feel stuck despite trying everything</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-mind-purple-500 rounded-full mt-3 flex-shrink-0"></div>
-                  <p className="text-slate-700 text-lg">Others seem to "get it" while you struggle</p>
+                  <div className="w-2 h-2 bg-mind-purple-400 rounded-full mt-3 flex-shrink-0"></div>
+                  <p className="text-slate-300 text-lg">Others seem to "get it" while you struggle</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-mind-blue-500 rounded-full mt-3 flex-shrink-0"></div>
-                  <p className="text-slate-700 text-lg">You react in ways you later regret</p>
+                  <div className="w-2 h-2 bg-mind-blue-400 rounded-full mt-3 flex-shrink-0"></div>
+                  <p className="text-slate-300 text-lg">You react in ways you later regret</p>
                 </div>
               </div>
             </div>
@@ -169,28 +177,28 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-white/40">
+      <section className="py-20 px-4 bg-slate-800/20">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6 text-slate-800">
-              Finally understand <span className="text-mind-purple-600 italic">yourself</span>
+            <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6 text-slate-100">
+              Finally understand <span className="text-mind-purple-400 italic">yourself</span>
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
               Our AI analyzes your thoughts, behaviors, and patterns to create a complete psychological profile
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             {features.map((feature, index) => (
-              <Card key={index} className="border-0 shadow-lg bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <Card key={index} className="border-slate-700/50 shadow-lg bg-slate-800/60 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <CardHeader>
                   <div className="flex items-center space-x-4">
                     {feature.icon}
-                    <CardTitle className="text-xl font-semibold text-slate-800">{feature.title}</CardTitle>
+                    <CardTitle className="text-xl font-semibold text-slate-100">{feature.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-slate-600 text-base leading-relaxed">
+                  <CardDescription className="text-slate-300 text-base leading-relaxed">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -204,28 +212,28 @@ const Index = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6 text-slate-800">
-              People are having <span className="text-mind-blue-600 italic">breakthroughs</span>
+            <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6 text-slate-100">
+              People are having <span className="text-mind-blue-400 italic">breakthroughs</span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+              <Card key={index} className="border-slate-700/50 shadow-lg bg-slate-800/60 backdrop-blur-sm">
                 <CardHeader>
                   <div className="flex items-center space-x-1 mb-2">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <CardDescription className="text-slate-700 text-base italic leading-relaxed">
+                  <CardDescription className="text-slate-300 text-base italic leading-relaxed">
                     "{testimonial.content}"
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div>
-                    <p className="font-semibold text-slate-800">{testimonial.name}</p>
-                    <p className="text-sm text-slate-600">{testimonial.role}</p>
+                    <p className="font-semibold text-slate-100">{testimonial.name}</p>
+                    <p className="text-sm text-slate-400">{testimonial.role}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -253,7 +261,7 @@ const Index = () => {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="text-lg py-3 bg-white/90 border-0"
+              className="text-lg py-3 bg-white/90 border-0 text-slate-900"
             />
             <Button 
               onClick={handleEarlyAccess}
@@ -283,7 +291,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 bg-slate-900 text-white">
+      <footer className="py-12 px-4 bg-slate-900 text-white border-t border-slate-800">
         <div className="container mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <div className="w-8 h-8 bg-gradient-to-br from-mind-blue-500 to-mind-purple-600 rounded-lg flex items-center justify-center">
