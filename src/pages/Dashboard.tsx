@@ -69,6 +69,12 @@ const Dashboard = () => {
                 Home
               </Button>
             </Link>
+            <Link to="/chat">
+              <Button size="sm" className="bg-gradient-to-r from-mind-blue-600 to-mind-purple-600 hover:from-mind-blue-700 hover:to-mind-purple-700 text-white">
+                <MessageSquare className="h-4 w-4 mr-2" />
+                Start Chat
+              </Button>
+            </Link>
             <Button variant="outline" size="sm" className="border-mind-purple-200 text-mind-purple-700 hover:bg-mind-purple-50">
               <Settings className="h-4 w-4 mr-2" />
               Settings
@@ -152,9 +158,12 @@ const Dashboard = () => {
           <TabsContent value="insights" className="space-y-4">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-playfair font-bold text-gray-800">Your Key Psychological Insights</h2>
-              <Button className="bg-gradient-to-r from-mind-blue-600 to-mind-purple-600 hover:from-mind-blue-700 hover:to-mind-purple-700 text-white">
-                Generate New Analysis
-              </Button>
+              <Link to="/chat">
+                <Button className="bg-gradient-to-r from-mind-blue-600 to-mind-purple-600 hover:from-mind-blue-700 hover:to-mind-purple-700 text-white">
+                  <MessageSquare className="h-4 w-4 mr-2" />
+                  Chat with AI
+                </Button>
+              </Link>
             </div>
             
             <div className="space-y-4">
@@ -189,9 +198,12 @@ const Dashboard = () => {
           <TabsContent value="sessions" className="space-y-4">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-playfair font-bold text-gray-800">Recent Sessions</h2>
-              <Button className="bg-gradient-to-r from-mind-blue-600 to-mind-purple-600 hover:from-mind-blue-700 hover:to-mind-purple-700 text-white">
-                Start New Session
-              </Button>
+              <Link to="/chat">
+                <Button className="bg-gradient-to-r from-mind-blue-600 to-mind-purple-600 hover:from-mind-blue-700 hover:to-mind-purple-700 text-white">
+                  <MessageSquare className="h-4 w-4 mr-2" />
+                  Start New Session
+                </Button>
+              </Link>
             </div>
             
             <div className="space-y-3">

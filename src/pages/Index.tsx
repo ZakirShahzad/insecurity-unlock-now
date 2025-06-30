@@ -1,10 +1,9 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Brain, Eye, Users, Shield, Star, ArrowRight, CheckCircle } from "lucide-react";
+import { Brain, Eye, Users, Shield, Star, ArrowRight, CheckCircle, MessageSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
 
@@ -83,6 +82,12 @@ const Index = () => {
             <Badge variant="secondary" className="animate-pulse-glow bg-mind-purple-100 text-mind-purple-700 border-mind-purple-200">
               Early Access
             </Badge>
+            <Link to="/chat">
+              <Button className="bg-gradient-to-r from-mind-blue-600 to-mind-purple-600 hover:from-mind-blue-700 hover:to-mind-purple-700 text-white">
+                <MessageSquare className="h-4 w-4 mr-2" />
+                Try AI Chat
+              </Button>
+            </Link>
             <Link to="/dashboard">
               <Button variant="outline" className="border-mind-blue-200 text-mind-blue-700 hover:bg-mind-blue-50">
                 Dashboard
@@ -112,6 +117,19 @@ const Index = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 max-w-md mx-auto">
+              <Link to="/chat" className="w-full sm:w-auto">
+                <Button 
+                  size="lg" 
+                  className="w-full bg-gradient-to-r from-mind-blue-600 to-mind-purple-600 hover:from-mind-blue-700 hover:to-mind-purple-700 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <MessageSquare className="mr-2 h-5 w-5" />
+                  Start AI Chat
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 max-w-md mx-auto">
               <Input
                 type="email"
                 placeholder="Enter your email"
@@ -122,9 +140,10 @@ const Index = () => {
               <Button 
                 onClick={handleEarlyAccess}
                 size="lg" 
-                className="bg-gradient-to-r from-mind-blue-600 to-mind-purple-600 hover:from-mind-blue-700 hover:to-mind-purple-700 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                variant="outline"
+                className="border-2 border-mind-blue-300 text-mind-blue-700 hover:bg-mind-blue-50 px-8 py-3 text-lg font-semibold"
               >
-                Get Early Access
+                Get Updates
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
