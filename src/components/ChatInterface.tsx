@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -51,7 +50,13 @@ export const ChatInterface = ({ conversationId }: ChatInterfaceProps) => {
       return;
     }
 
-    setMessages(data || []);
+    // Type assertion to ensure role is properly typed
+    const typedMessages = (data || []).map(msg => ({
+      ...msg,
+      role: msg.role as 'user' | 'assistant'
+    }));
+
+    setMessages(typedMessages);
   };
 
   const sendMessage = async () => {
