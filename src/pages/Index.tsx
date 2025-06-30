@@ -97,7 +97,7 @@ const Index = () => {
         <div className="container mx-auto text-center max-w-6xl">
           <div className="animate-fade-in">
             <Badge className="mb-6 bg-gradient-to-r from-mind-blue-900/50 to-mind-purple-900/50 text-purple-300 border-purple-500/30">
-              🧠 Powered by Advanced Psychology AI
+              🧠  by Advanced Psychology AI
             </Badge>
             
             <h1 className="text-5xl md:text-7xl font-playfair font-bold mb-6 bg-gradient-to-r from-slate-100 via-mind-blue-300 to-mind-purple-300 bg-clip-text text-transparent leading-tight">
