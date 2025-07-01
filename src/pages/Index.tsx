@@ -1,16 +1,17 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Brain, Eye, Users, Shield, Star, ArrowRight, CheckCircle } from "lucide-react";
+import { Brain, Eye, Users, Shield, Star, ArrowRight, CheckCircle, User, LogOut } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Index = () => {
   const [email, setEmail] = useState('');
   const { toast } = useToast();
+  const { user, signOut } = useAuth();
 
   const handleEarlyAccess = () => {
     if (email) {
@@ -20,6 +21,14 @@ const Index = () => {
       });
       setEmail('');
     }
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    toast({
+      title: "Signed out successfully",
+      description: "Come back anytime to continue your journey.",
+    });
   };
 
   const testimonials = [
@@ -80,14 +89,50 @@ const Index = () => {
             </span>
           </div>
           <div className="flex items-center space-x-4">
-            <Badge variant="secondary" className="animate-pulse-glow bg-slate-800 text-purple-300 border-purple-500/30">
-              Early Access
-            </Badge>
-            <Link to="/dashboard">
-              <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800">
-                Dashboard
-              </Button>
-            </Link>
+            {user ? (
+              <>
+                <div className="flex items-center space-x-2">
+                  <User className="h-4 w-4 text-slate-300" />
+                  <span className="text-slate-300">{user.email}</span>
+                </div>
+                <Link to="/dashboard">
+                  <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800">
+                    Dashboard
+                  </Button>
+                </Link>
+                <Button 
+                  variant="ghost" 
+                  onClick={handleSignOut}
+                  className="text-slate-300 hover:bg-slate-800"
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Badge variant="secondary" className="animate-pulse-glow bg-slate-800 text-purple-300 border-purple-500/30">
+                  Early Access
+                </Badge>
+                <div className="flex items-center space-x-2">
+                  <Link to="/login">
+                    <Button variant="ghost" className="text-slate-300 hover:bg-slate-800">
+                      Sign In
+                    </Button>
+                  </Link>
+                  <Link to="/register">
+                    <Button className="bg-gradient-to-r from-mind-blue-600 to-mind-purple-600 hover:from-mind-blue-700 hover:to-mind-purple-700">
+                      Sign Up
+                    </Button>
+                  </Link>
+                </div>
+                <Link to="/dashboard">
+                  <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800">
+                    Dashboard
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </header>
@@ -111,27 +156,45 @@ const Index = () => {
               MindMirror reveals the hidden patterns sabotaging your happiness and success.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 max-w-md mx-auto">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="text-lg py-3 border-2 border-slate-600 bg-slate-800/50 text-white placeholder:text-slate-400 focus:border-mind-purple-400"
-              />
-              <Button 
-                onClick={handleEarlyAccess}
-                size="lg" 
-                className="bg-gradient-to-r from-mind-blue-600 to-mind-purple-600 hover:from-mind-blue-700 hover:to-mind-purple-700 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Get Early Access
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </div>
+            {!user && (
+              <>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 max-w-md mx-auto">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="text-lg py-3 border-2 border-slate-600 bg-slate-800/50 text-white placeholder:text-slate-400 focus:border-mind-purple-400"
+                  />
+                  <Button 
+                    onClick={handleEarlyAccess}
+                    size="lg" 
+                    className="bg-gradient-to-r from-mind-blue-600 to-mind-purple-600 hover:from-mind-blue-700 hover:to-mind-purple-700 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    Get Early Access
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
 
-            <p className="text-sm text-slate-400 mb-16">
-              Join 2,847 people discovering their hidden potential
-            </p>
+                <p className="text-sm text-slate-400 mb-16">
+                  Join 2,847 people discovering their hidden potential
+                </p>
+              </>
+            )}
+
+            {user && (
+              <div className="mb-16">
+                <Link to="/dashboard">
+                  <Button 
+                    size="lg" 
+                    className="bg-gradient-to-r from-mind-blue-600 to-mind-purple-600 hover:from-mind-blue-700 hover:to-mind-purple-700 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    Start Your Analysis
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* Problem Section */}
@@ -242,53 +305,54 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-mind-blue-600 to-mind-purple-600">
-        <div className="container mx-auto text-center max-w-4xl">
-          <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6 text-white">
-            Stop wondering "What's wrong with me?"
-            <br />
-            <span className="italic">Start understanding who you are.</span>
-          </h2>
-          
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Join thousands of people who've broken free from their unconscious patterns and created the life they actually want.
-          </p>
+      {!user && (
+        <section className="py-20 px-4 bg-gradient-to-r from-mind-blue-600 to-mind-purple-600">
+          <div className="container mx-auto text-center max-w-4xl">
+            <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6 text-white">
+              Stop wondering "What's wrong with me?"
+              <br />
+              <span className="italic">Start understanding who you are.</span>
+            </h2>
+            
+            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Join thousands of people who've broken free from their unconscious patterns and created the life they actually want.
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 max-w-md mx-auto">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="text-lg py-3 bg-white/90 border-0 text-slate-900"
-            />
-            <Button 
-              onClick={handleEarlyAccess}
-              size="lg" 
-              className="bg-white text-mind-purple-600 hover:bg-gray-50 px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              Get Early Access
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 max-w-md mx-auto">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="text-lg py-3 bg-white/90 border-0 text-slate-900"
+              />
+              <Button 
+                onClick={handleEarlyAccess}
+                size="lg" 
+                className="bg-white text-mind-purple-600 hover:bg-gray-50 px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                Get Early Access
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
 
-          <div className="flex items-center justify-center space-x-6 text-blue-100">
-            <div className="flex items-center space-x-2">
-              <CheckCircle className="h-5 w-5" />
-              <span>14-day free trial</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <CheckCircle className="h-5 w-5" />
-              <span>No commitment</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <CheckCircle className="h-5 w-5" />
-              <span>Cancel anytime</span>
+            <div className="flex items-center justify-center space-x-6 text-blue-100">
+              <div className="flex items-center space-x-2">
+                <CheckCircle className="h-5 w-5" />
+                <span>14-day free trial</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle className="h-5 w-5" />
+                <span>No commitment</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle className="h-5 w-5" />
+                <span>Cancel anytime</span>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Footer */}
       <footer className="py-12 px-4 bg-slate-900 text-white border-t border-slate-800">
